@@ -56,22 +56,22 @@ function setup() {
   
   // set up buttons
   bottleButton = createButton('bottle');
-  bottleButton.position(320,900);
+  bottleButton.position(width/2-170,900);
   bottleButton.size(150,50);
   bottleButton.style("font-family", "Ubuntu");
   bottleButton.style("font-size", "30px");
   bottleButton.style("background-color", mediumBlue);
   bottleButton.style("border-color", darkBlue);
-  bottleButton.style("border-width", 10);
+  bottleButton.style("border-radius", "6px");
   bottleButton.mousePressed(bottleEmotions);
   releaseButton = createButton('release');
-  releaseButton.position(555,900);
+  releaseButton.position(width/2+40,900);
   releaseButton.size(150,50);
   releaseButton.style("font-family", "Ubuntu");
   releaseButton.style("font-size", "30px");
   releaseButton.style("background-color", mediumBlue);
   releaseButton.style("border-color", darkBlue);
-  releaseButton.style("border-width", 10);
+  releaseButton.style("border-radius", "6px");
   releaseButton.mousePressed(releaseEmotions);
 } // ~~END of setup()~~
 
@@ -95,7 +95,7 @@ function draw() {
   text("bottled emotions", 300, 100);
   
   // animation
-  if (emotionY > bottleHeight*0.2) {
+  if (emotionY > bottleHeight*0.18) {
     autoGrow();
   } else {
     explode();
@@ -106,15 +106,24 @@ function draw() {
 /** automatically increases the water level */
 function autoGrow() {
   if (emotionHeight > 1) {      // checks if emotions have been bottled
-    emotionHeight += 0.15;
-    emotionY -= 0.15;
+    if (emotionY < bottleHeight*0.37) {    // fast uniform speed in neck of bottle
+      emotionHeight += 0.37;
+      emotionY -= 0.37;
+    } else if (emotionY < bottleHeight*0.48) {    // speeds up gradually as bottle width shrinks
+      let change = map(emotionY, bottleHeight*0.48, bottleHeight*0.37, 0.17, 0.33, true);
+      emotionHeight += change;
+      emotionY -= change;
+    } else {    // slow uniform speed in bottom part of bottle
+      emotionHeight += 0.15;
+      emotionY -= 0.15;
+    }
   }
 } // ~~END of autoGrow()~~
 
 
 /** increases water level when bottle button is presssed */
 function bottleEmotions() {
-  if (emotionY > bottleHeight*0.2) {
+  if (emotionY > bottleHeight*0.18) {
     emotionHeight += 15;
     emotionY -= 15;
   }
@@ -123,7 +132,7 @@ function bottleEmotions() {
 
 /** decreases water level when release button is presssed */
 function releaseEmotions() {
-  if ((emotionHeight > 1) && (emotionY > bottleHeight*0.2)) {
+  if ((emotionHeight > 1) && (emotionY > bottleHeight*0.18)) {
     emotionHeight -= 15;
     emotionY += 15;
   }
@@ -134,10 +143,10 @@ function releaseEmotions() {
 function explode() {
   fill(darkBlue);
   rect(465, explosionY, 70, explosionHeight);
-  explosionHeight += 28;
-  explosionY -= 28;
-  capY -= 28;
+  explosionHeight += 30;
+  explosionY -= 30;
+  capY -= 30;
   if (explosionY < -500) {
-    remove();
+    remove();      // deletes canvas
   }
 } // ~~END of explode()~~
