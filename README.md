@@ -4,7 +4,7 @@
 *Contributor(s):* Elena Wang     
 *Course:* ARS 361 Interactive Digital Multimedia, Spring 2022       
 *Instructor:* John Slepian        
-*Timeline:* February 2022       
+*Timeline:* February-March 2022       
 
 *Link to sketch on the p5.js editor website:* https://editor.p5js.org/ewang88/full/xHy7U0CvD
 
@@ -12,7 +12,7 @@
 This is a project I created for the ARS 361 Interactive Digital Multimedia class at Smith College. The purpose of this interactive art piece is to simplistically visualize the bottling up of emotions and the consequences of doing so. 
 
 ### *What this project does:*        
-Click the "bottle" button to add metaphorical emotions to the bottle, and click the "release" button to remove emotions from the bottle. If the bottle has any amount of emotions in it, the amount will gradually and automatically grow. If the bottle completely fills up, the bottle will explode and the canvas will be deleted.
+The metaphorical emotions are represented by a dark blue substance that moves as if it is bubbling, which represents the way that bottled emotions simmer under the surface. Click the "bottle" button to add metaphorical emotional burden to the bottle, and click the "release" button to relieve emotional burden from the bottle. If the bottle has any amount of emotional burden in it, the amount will gradually and automatically grow. As the bottle narrows near the top, the emotions grow faster, similar to how the weight of emotional burden gets heavier as you carry more and more burden. If the bottle completely fills up, the bottle will explode and the canvas will be deleted, adding a sense of finality to the experience. The viewer is left to interpret what may occur when one reaches their emotional limit.
 
 ### *What I used:*     
 The images were created in Adobe Illustrator and Adobe Photoshop. The code was written in JavaScript and uses the p5.js library.
